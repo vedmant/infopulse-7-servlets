@@ -7,8 +7,8 @@ import java.io.IOException;
 /**
  * Created by vedmant on 1/21/17.
  */
-@WebServlet(name = "MyServlet", urlPatterns = "/test")
-public class MyServlet extends HttpServlet {
+@WebServlet(name = "HandleServlet", urlPatterns = "/handle")
+public class HandleServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }

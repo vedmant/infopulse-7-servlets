@@ -4,4 +4,15 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+
+  <filter>
+    <filter-name>testFilter</filter-name>
+    <filter-class>TestFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>testFilter</filter-name>
+    <servlet-name>ShowServlet</servlet-name>
+  </filter-mapping>
+
+
 </web-app>

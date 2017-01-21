@@ -19,7 +19,7 @@
 
             <br><br><br>
             <div class="panel panel-primary">
-                <form action="test" method="get">
+                <form action="handle" method="get">
                     <div class="panel-heading"><h3>Test form</h3></div>
                     <div class="panel-body">
                         <div class="form-group">
@@ -32,6 +32,8 @@
                     </div>
                 </form>
             </div>
+
+            <a href="/show">Show info</a>
 
         </div>
     </div>
