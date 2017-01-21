@@ -1,11 +1,8 @@
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 /**
  * Created by vedmant on 1/21/17.
@@ -17,6 +14,22 @@ public class MyServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        /**
+         * Set session
+         */
+
+        HttpSession session = request.getSession(true);
+        String sessName = (String) session.getAttribute("name");
+        if (sessName == null) {
+            sessName = request.getParameter("name");
+            session.setAttribute("name", sessName);
+        }
+
+        /**
+         * Set cookie
+         */
+
         Cookie[] cookies = request.getCookies();
         String name = null;
 
@@ -35,14 +48,7 @@ public class MyServlet extends HttpServlet {
             response.addCookie(cookie);
         }
 
-        String name1 = request.getParameter("name");
-        response.setContentType("text/html");
-        PrintWriter pw = response.getWriter();
-        pw.println("<html>");
-        pw.println("<body>");
-        pw.println("<p>Hello, " + name1 + "</p>");
-        pw.println("</body>");
-        pw.println("</html>");
-        pw.close();
+        RequestDispatcher rd = request.getRequestDispatcher("/show");
+        rd.forward(request, response);
     }
 }
